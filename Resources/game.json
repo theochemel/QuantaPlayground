@@ -1,0 +1,88 @@
+{
+    "levels": [
+        {
+            "level_number": 1,
+            "title": "Testing Testing 123",
+            "subtitle": "An experiment.",
+            "num_qubits": 2,
+            "num_timesteps": 2,
+            "allowed_gates": [],
+            "solution": [
+                {
+                    "gates": ["identity", "hadamard"]
+                },
+                {
+                    "gates": ["pauliX", "identity"]
+                }
+            ]
+        },
+        {
+            "level_number": 2,
+            "title": "Testing Testing 1234",
+            "subtitle": "The sequel.",
+            "num_qubits": 3,
+            "num_timesteps": 3,
+            "allowed_gates": [],
+            "solution": [
+                {
+                    "gates": ["identity", "hadamard", "hadamard"]
+                },
+                {
+                    "gates": ["pauliX", "identity", "identity"]
+                },
+                {
+                    "gates": ["identity", "pauliX", "qubitOnControl"]
+                }
+            ]
+        },
+        {
+            "level_number": 3,
+            "title": "Testing Testing 1234",
+            "subtitle": "The sequel.",
+            "num_qubits": 2,
+            "num_timesteps": 2,
+            "allowed_gates": [],
+            "solution": [
+                {
+                    "gates": ["identity", "hadamard"]
+                },
+                {
+                    "gates": ["pauliX", "identity"]
+                }
+            ]
+        },
+        {
+            "level_number": 4,
+            "title": "Testing Testing 1234",
+            "subtitle": "The sequel.",
+            "num_qubits": 2,
+            "num_timesteps": 2,
+            "allowed_gates": [],
+            "solution": [
+                {
+                    "gates": ["identity", "hadamard"]
+                },
+                {
+                    "gates": ["pauliX", "identity"]
+                }
+            ]
+        },
+        {
+            "level_number": 5,
+            "title": "Testing Testing 1234",
+            "subtitle": "The sequel.",
+            "num_qubits": 2,
+            "num_timesteps": 2,
+            "allowed_gates": [],
+            "solution": [
+                {
+                    "gates": ["identity", "hadamard"]
+                },
+                {
+                    "gates": ["pauliX", "identity"]
+                }
+            ]
+        }
+
+    ]
+}
