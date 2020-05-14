@@ -10,5 +10,6 @@ public struct GameView: View {
     
     public var body: some View {
         LevelView(level: $game.levels[game.selectedLevelIndex])
+            .environmentObject(self.game.levels[game.selectedLevelIndex].circuit.dragDropStatus)
     }
 }

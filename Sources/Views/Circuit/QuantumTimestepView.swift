@@ -3,17 +3,16 @@ import SwiftUI
 
 public struct QuantumTimestepView: View {
     let timestepIndex: Int
-    let timestepID: UUID
     @ObservedObject var timestep: QuantumTimestep
     @EnvironmentObject var dragDropStatus: DragDropStatus
     
-    init(timestepIndex: Int, timestepID: UUID, timestep: QuantumTimestep) {
-        self.timestepIndex = timestepIndex
-        self.timestepID = timestepID
-        self.timestep = timestep
-//        print("New QuantumTimestepView")
-//        print("Index: \(self.timestepIndex), ID: \(self.timestepID)")
-    }
+//    init(timestepIndex: Int, timestepID: UUID, timestep: QuantumTimestep) {
+//        self.timestepIndex = timestepIndex
+//        self.timestepID = timestepID
+//        self.timestep = timestep
+////        print("New QuantumTimestepView")
+////        print("Index: \(self.timestepIndex), ID: \(self.timestepID)")
+//    }
     
     public var body: some View {
         
