@@ -3,7 +3,6 @@ import PlaygroundSupport
 import SwiftUI
 
 let gameDataPath = Bundle.main.url(forResource: "game", withExtension: "json")!
-print(gameDataPath)
 let gameData = try Data(contentsOf: gameDataPath)
 let decoder = JSONDecoder()
 let game = try decoder.decode(Game.self, from: gameData)

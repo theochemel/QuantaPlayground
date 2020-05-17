@@ -19,6 +19,8 @@ struct QuantumGateDropTargetView: View {
     var body: some View {
         ZStack {
             RoundedRectangle(cornerRadius: 10.0)
+                .foregroundColor(.backgroundColor)
+            RoundedRectangle(cornerRadius: 10.0)
                 .stroke(style: StrokeStyle(lineWidth: 2.0, lineCap: .round, dash: [10.0]))
                 .foregroundColor(.gray)
         }
@@ -79,7 +81,6 @@ struct CircuitQuantumGateView: View {
                 }
                 
                 if isHovering {
-                    print("Hovering over gate \(self.gatePath)")
                     self.dragDropStatus.isHovering(path: self.gatePath)
                 } else {
                     self.dragDropStatus.hoverEnded()

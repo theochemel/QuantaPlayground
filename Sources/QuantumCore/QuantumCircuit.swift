@@ -12,9 +12,7 @@ public final class QuantumCircuit: ObservableObject {
     public var timesteps: [QuantumTimestep]
     public var state: QuantumCircuitState
     public var gateCatalog: QuantumGateCatalog
-    public var dragDropStatus: DragDropStatus
-    
-    private var dragDropStatusSubscription: AnyCancellable? = nil
+
     
     public init() {
         self.numQubits = 0
@@ -23,13 +21,12 @@ public final class QuantumCircuit: ObservableObject {
         
         // TODO: Inject this as a parameter. Let the level load the available gates and stick them in here.
         self.gateCatalog = QuantumGateCatalog()
-        self.dragDropStatus = DragDropStatus()
-        
-        self.dragDropStatusSubscription = self.dragDropStatus.requiresExecution
-            .subscribe(on: DispatchQueue.main)
-            .sink { (_) in
-                self.executeDragDrop()
-        }
+    }
+    
+    public func reset(numTimesteps: Int) {
+        self.timesteps = []
+        self.state = QuantumCircuitState(self.numQubits)
+        self.setTimestepCount(numTimesteps)
     }
     
     public func addTimestep() {
@@ -67,22 +64,15 @@ public final class QuantumCircuit: ObservableObject {
         }
     }
     
-    private func executeDragDrop() {
-        print("Checking drag drop...")
-//        DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
-            guard let sourceGateType = self.dragDropStatus.sourceGateType, let destinationGatePath = self.dragDropStatus.destinationGatePath else {
-                print("Not enough info. sourceGateType: \(self.dragDropStatus.sourceGateType), destinationGatePath: \(self.dragDropStatus.destinationGatePath)")
-                return
-            }
-    //        self.timesteps[destinationGatePath.0].gates[destinationGatePath.1] = sourceGateType
-            print("Setting \(destinationGatePath) to \(sourceGateType)")
-            self.timesteps[destinationGatePath.0].addGate(sourceGateType, at: destinationGatePath.1)
-            
-            if let sourceGatePath = self.dragDropStatus.sourceGatePath {
-                self.timesteps[sourceGatePath.0].gates[sourceGatePath.1] = .identity()
-            }
-            self.evaluate()
-            self.dragDropStatus.reset()
-//        }
+    public func executeDragDrop(sourceGateType: QuantumGateType?, sourceGatePath: (Int, Int)?, destinationGatePath: (Int, Int)?) {
+        guard let sourceType = sourceGateType, let destinationPath = destinationGatePath else {
+            return
+        }
+        self.timesteps[destinationPath.0].addGate(sourceType, at: destinationPath.1)
+        
+        if let sourcePath = sourceGatePath {
+            self.timesteps[sourcePath.0].gates[sourcePath.1] = .identity()
+        }
+        self.evaluate()
     }
 }

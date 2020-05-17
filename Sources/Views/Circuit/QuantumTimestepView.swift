@@ -6,14 +6,6 @@ public struct QuantumTimestepView: View {
     @ObservedObject var timestep: QuantumTimestep
     @EnvironmentObject var dragDropStatus: DragDropStatus
     
-//    init(timestepIndex: Int, timestepID: UUID, timestep: QuantumTimestep) {
-//        self.timestepIndex = timestepIndex
-//        self.timestepID = timestepID
-//        self.timestep = timestep
-////        print("New QuantumTimestepView")
-////        print("Index: \(self.timestepIndex), ID: \(self.timestepID)")
-//    }
-    
     public var body: some View {
         
         VStack(alignment: .center, spacing: 0.0) {

@@ -7,27 +7,18 @@ public final class DragDropStatus: ObservableObject {
     
     public var sourceGatePath: (Int, Int)? { willSet (newValue) {
         self.objectWillChange.send()
-        print("Changing sourceGatePath to \(newValue)")
     }}
     public var sourceGateType: QuantumGateType? { willSet (newValue) {
         self.objectWillChange.send()
-        print("Changing sourceGateType to \(newValue)")
     }}
     public var destinationGatePath: (Int, Int)? { willSet (newValue) {
         self.objectWillChange.send()
-        print("Changing destinationGatePath to \(newValue)")
-        }
-        didSet {
-            print("SET DESTINATIONGATEPATH: \(self.destinationGatePath)")
-        }
-    }
+    }}
     public var isDragging = false { willSet (newValue) {
         self.objectWillChange.send()
-        print("Changing isDragging to \(newValue)")
     }}
     
     public init() {
-        print("New DragDropStatus created.")
     }
     
     public func dragFinished() {
@@ -50,13 +41,11 @@ public final class DragDropStatus: ObservableObject {
     }
     
     public func isHovering(path: (Int, Int)) {
-        print("isHovering: \(path)")
         self.destinationGatePath = path
     }
     
     public func hoverEnded() {
-        print("hover ended")
-//        self.destinationGatePath = nil
+        self.destinationGatePath = nil
     }
     
     public func reset() {

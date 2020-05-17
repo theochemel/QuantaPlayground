@@ -6,11 +6,12 @@ struct BarView: View {
     let index: Int
     var maxHeight: CGFloat
     @State private var isHovering = false { didSet {
-        self.displayProbabilityPopover = (self.probability >= self.solutionProbability && isHovering)
-        self.displaySolutionProbabilityPopover = (self.probability < self.solutionProbability && isHovering)
+        self.displayProbabilityPopover = (self.probability >= self.solutionProbability && isHovering && self.levelInteractionStatus.isInteractionEnabled)
+        self.displaySolutionProbabilityPopover = (self.probability < self.solutionProbability && isHovering && self.levelInteractionStatus.isInteractionEnabled)
     }}
     @State private var displayProbabilityPopover = false
     @State private var displaySolutionProbabilityPopover = false
+    @EnvironmentObject private var levelInteractionStatus: LevelInteractionStatus
 
     public var body: some View {
         ZStack(alignment: .bottom) {

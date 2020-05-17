@@ -19,4 +19,12 @@ public class ImageProvider {
         image.isTemplate = true
         return image
     }
+    
+    static func qubitTutorialImage() -> NSImage {
+        return NSImage(named: "qubits")!
+    }
+    
+    static func gateTutorialImage() -> NSImage {
+        return NSImage(named: "gates")!
+    }
 }

@@ -40,19 +40,23 @@ public final class Level: ObservableObject, Decodable {
         }
     }
     
+    public func reset() {
+        self.circuit.reset(numTimesteps: self.numTimesteps)
+
+        self.anyCancellable = self.circuit.objectWillChange.sink { (_) in
+            DispatchQueue.main.async {
+                self.compareCircuitToSolution()
+            }
+        }
+    }
+    
     private func compareCircuitToSolution() {
         let circuitProbabilities = self.circuit.state.probabilities
         let solutionProbabilities = self.solutionCircuit.state.probabilities
-        
-        print("Circuit: \(circuitProbabilities)")
-        print("Solution: \(solutionProbabilities)")
-        
+            
         if circuitProbabilities == solutionProbabilities {
-            print("winner winner chicken dinner!")
             self.isCompleted.send()
             self.anyCancellable?.cancel()
-        } else {
-            print(":(")
         }
     }
     

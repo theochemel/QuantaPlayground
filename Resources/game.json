@@ -2,43 +2,34 @@
     "levels": [
         {
             "level_number": 1,
-            "title": "Testing Testing 123",
-            "subtitle": "An experiment.",
+            "title": "Flippin' Bits",
+            "subtitle": "Use the Pauli X gate to flip a qubit.",
             "num_qubits": 2,
-            "num_timesteps": 2,
+            "num_timesteps": 1,
             "allowed_gates": [],
             "solution": [
                 {
-                    "gates": ["identity", "hadamard"]
-                },
-                {
-                    "gates": ["pauliX", "identity"]
+                    "gates": ["identity", "pauliX"]
                 }
             ]
         },
         {
             "level_number": 2,
-            "title": "Testing Testing 1234",
-            "subtitle": "The sequel.",
+            "title": "Flippin' Bits Pt. 2",
+            "subtitle": "Use the Pauli X gate to flip a qubit.",
             "num_qubits": 3,
-            "num_timesteps": 3,
+            "num_timesteps": 1,
             "allowed_gates": [],
             "solution": [
                 {
-                    "gates": ["identity", "hadamard", "hadamard"]
-                },
-                {
-                    "gates": ["pauliX", "identity", "identity"]
-                },
-                {
-                    "gates": ["identity", "pauliX", "qubitOnControl"]
+                    "gates": ["pauliX", "identity", "pauliX"]
                 }
             ]
         },
         {
             "level_number": 3,
-            "title": "Testing Testing 1234",
-            "subtitle": "The sequel.",
+            "title" : "Schrodinger's States",
+            "subtitle": "The Hadamard gate can place a qubit in superposition.",
             "num_qubits": 2,
             "num_timesteps": 2,
             "allowed_gates": [],
@@ -47,42 +38,44 @@
                     "gates": ["identity", "hadamard"]
                 },
                 {
-                    "gates": ["pauliX", "identity"]
+                    "gates": ["hadamard", "identity"]
                 }
             ]
         },
         {
             "level_number": 4,
-            "title": "Testing Testing 1234",
-            "subtitle": "The sequel.",
-            "num_qubits": 2,
+            "title" : "A Tangled Mess",
+            "subtitle": "The control gate can help entangle qubits.",
+            "num_qubits": 3,
             "num_timesteps": 2,
             "allowed_gates": [],
             "solution": [
                 {
-                    "gates": ["identity", "hadamard"]
+                    "gates": ["identity", "identity", "hadamard"]
                 },
                 {
-                    "gates": ["pauliX", "identity"]
+                    "gates": ["pauliX", "identity", "qubitOnControl"]
                 }
             ]
         },
         {
-            "level_number": 5,
-            "title": "Testing Testing 1234",
-            "subtitle": "The sequel.",
-            "num_qubits": 2,
-            "num_timesteps": 2,
+            "level_number": 4,
+            "title": "Toffoli Time",
+            "subtitle": "Try using some more control gates.",
+            "num_qubits": 3,
+            "num_timesteps": 3,
             "allowed_gates": [],
             "solution": [
                 {
-                    "gates": ["identity", "hadamard"]
+                    "gates": ["identity", "identity", "hadamard"]
                 },
                 {
-                    "gates": ["pauliX", "identity"]
+                    "gates": ["identity", "hadamard", "identity"]
+                },
+                {
+                    "gates": ["pauliX", "qubitOnControl", "qubitOnControl"]
                 }
             ]
         }
-
     ]
 }

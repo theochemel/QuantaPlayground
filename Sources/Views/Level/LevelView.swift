@@ -2,10 +2,11 @@ import SwiftUI
 
 public struct LevelView: View {
     @Binding public var level: Level
+    @Binding public var displayLevelSelector: Bool
     
     public var body: some View {
         VStack {
-            LevelHeaderView(levelNumber: self.level.levelNumber, title: self.level.title, subtitle: self.level.subtitle)
+            LevelHeaderView(levelNumber: self.level.levelNumber, title: self.level.title, subtitle: self.level.subtitle, displayLevelSelector: self.$displayLevelSelector)
             QuantumGateStoreView(store: self.$level.circuit.gateCatalog)
                 .padding([.top, .leading, .trailing], 40.0)
                 .zIndex(1.0)
@@ -17,7 +18,7 @@ public struct LevelView: View {
                 .padding([.bottom, .leading, .trailing], 40.0)
         }
             .background(Color.backgroundColor)
-//            .environmentObject(DragDropManager(circuit: self.level.circuit))
             .environmentObject(self.level.circuit.gateCatalog)
     }
 }
+

@@ -4,12 +4,7 @@ public struct LevelHeaderView: View {
     public let levelNumber: Int
     public let title: String
     public let subtitle: String
-    
-    public init(levelNumber: Int, title: String, subtitle: String) {
-        self.levelNumber = levelNumber
-        self.title = title
-        self.subtitle = subtitle
-    }
+    @Binding public var displayLevelSelector: Bool
     
     public var body: some View {
         VStack(spacing: 0.0) {
@@ -31,10 +26,8 @@ public struct LevelHeaderView: View {
                     Spacer()
                     VStack(spacing: 8.0) {
                         AnimatedButton(action: {
-                            print("Next Level!")
+                            self.displayLevelSelector = true
                         }, title: "Select Level")
-                        AnimatedButton(action: {
-                        }, title: "Get Hint")
                     }
                 }.padding(EdgeInsets(top: 24.0, leading: 36.0, bottom: 24.0, trailing: 36.0))
                 .shadow(radius: 10.0)
